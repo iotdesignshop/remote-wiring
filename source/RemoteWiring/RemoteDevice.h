@@ -214,8 +214,7 @@ public:
         );
 
 	
-	// Added CAJ 03/18/2016
-	// Allow us to send custom Sysex commands
+	// Allow sending custom Sysex commands
 	void writeCustomSysexMessage(uint8_t command, IBuffer ^buffer);
 
 private:
