@@ -260,6 +260,19 @@ RemoteDevice::getPinMode(
     return getPinMode( parsed_pin + _hardwareProfile->AnalogOffset );
 }
 
+void RemoteDevice::writeCustomSysexMessage(uint8_t command, IBuffer ^ buffer)
+{
+	std::lock_guard<std::recursive_mutex> lock(_device_mutex);
+
+	if (!_initialized)
+	{
+		return;
+	}
+
+	_firmata->sendSysex(command, buffer);
+	_firmata->flush();
+}
+
 void
 RemoteDevice::pinMode(
     uint8_t pin_,

@@ -28,6 +28,7 @@
 #include <mutex>
 #include "TwoWire.h"
 #include "HardwareProfile.h"
+using namespace Windows::Storage::Streams;
 
 namespace Microsoft {
 namespace Maker {
@@ -212,6 +213,10 @@ public:
         Platform::String ^analog_pin_
         );
 
+	
+	// Added CAJ 03/18/2016
+	// Allow us to send custom Sysex commands
+	void writeCustomSysexMessage(uint8_t command, IBuffer ^buffer);
 
 private:
     //constant members
